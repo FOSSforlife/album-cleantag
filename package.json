@@ -1,0 +1,18 @@
+{
+  "name": "cleantag",
+  "version": "0.0.0",
+  "description": "A module that removes common unnecessary words from album and song tags, such as 'remastered', 'deluxe edition', etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "album",
+    "tags",
+    "music",
+    "lastfm",
+    "scrobbler"
+  ],
+  "author": "Elias Jackson",
+  "license": "ISC"
+}
