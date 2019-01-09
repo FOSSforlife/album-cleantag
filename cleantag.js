@@ -6,7 +6,6 @@ module.exports.clean = function (name, options = {}) {
     }
     else if(options.excludeRedFlags) {
         redFlags = redFlags.filter(f => options.excludeRedFlags.indexOf(f) === -1);
-        console.log(redFlags);
     }
 
     redFlags =  '(' + redFlags.join('|') + ')';
