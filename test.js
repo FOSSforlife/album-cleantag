@@ -1,2 +1,5 @@
 const cleantag = require('./index');
-console.log(cleantag('Disintegration (DELUXE EDITION)'));
+let albumName = 'Godflesh - Post Self (Remastered)';
+albumName = cleantag.clean(albumName);
+
+console.log(albumName); // Godflesh - Post Self

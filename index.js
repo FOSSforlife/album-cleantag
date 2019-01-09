@@ -5,6 +5,6 @@ unwantedSuffixes = '(' + unwantedSuffixes.join('|') + ')';
 
 let regex = new RegExp('(\\(|\\[|- )' + unwantedSuffixes + '(\\)|\\])?(\\)|\\])?', 'gi');
 
-module.exports = function (name) {
+module.exports.clean = function (name) {
     return name.replace(regex, '').trim();
 };
