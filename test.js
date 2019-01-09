@@ -1,2 +1,2 @@
 const cleantag = require('./index');
-console.log(cleantag('title [2009 Anniversary]'));
+console.log(cleantag('Disintegration (Deluxe Edition)'));
