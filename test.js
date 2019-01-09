@@ -4,7 +4,7 @@ const cleantag = require('./index');
 
 let albumName = 'Converge - Jane Doe';
 
-let unwantedSuffixes = JSON.parse(fs.readFileSync('./suffixes.json'));
+let unwantedSuffixes = JSON.parse(fs.readFileSync('./sampleSuffixes.json'));
 
 let formats = [
     (name, suffix) => `${name} (${suffix})`,
