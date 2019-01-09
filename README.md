@@ -20,8 +20,14 @@ For example, if you give it `Swans - Filth (Deluxe Version)`, it will return `Sw
 
 
 ## Usage
+Install using npm:
 ```
-const cleantag = require('cleantag');
+npm i album-cleantag
+```
+
+
+```
+const cleantag = require('album-cleantag');
 
 let albumName = 'Godflesh - Post Self (Remastered)';
 albumName = cleantag.clean(albumName);
