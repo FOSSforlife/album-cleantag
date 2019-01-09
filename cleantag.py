@@ -25,4 +25,4 @@ def clean(name, options={}):
             firstBit = name[0:lastHyphen]
             name = firstBit + hyphenRegex.sub('', name[lastHyphen:], 1)
 
-    return name.strip();
+    return name.strip()

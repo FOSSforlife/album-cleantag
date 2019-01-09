@@ -20,6 +20,8 @@ For example, if you give it `Swans - Filth (Deluxe Version)`, it will return `Sw
 
 
 ## Usage
+
+### Node
 Install using npm:
 ```
 npm i album-cleantag
@@ -33,6 +35,14 @@ let albumName = 'Godflesh - Post Self (Remastered)';
 albumName = cleantag.clean(albumName);
 
 console.log(albumName); // Godflesh - Post Self
+```
+
+### Python
+Python users can download the cleantag.py file and use it in your code:
+```
+import cleantag
+
+print(cleantag.clean('Yeezus (Explicit Version)')) # Yeezus
 ```
 
 ### Options
