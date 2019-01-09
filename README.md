@@ -49,8 +49,9 @@ print(cleantag.clean('Yeezus (Explicit Version)')) # Yeezus
 The options object can be passed to the second parameter. It can contain the following parameters:
 ```
 const options = {
-    customRedFlags: replace my red flags with your own list
-    excludeRedFlags: red flags to ignore (assuming customRedFlags is empty)
+    addRedFlags: // add red flags to the list
+    excludeRedFlags: // remove red flags from the list
+    customRedFlags: // replace my red flags with your own list (don't use with the other two options)
 }
 
 cleantag.clean(albumName, options);

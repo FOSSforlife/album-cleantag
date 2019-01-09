@@ -4,9 +4,14 @@ module.exports.clean = function (name, options = {}) {
     if(options.customRedFlags) {
         redFlags = options.customRedFlags;
     }
-    else if(options.excludeRedFlags) {
-        redFlags = redFlags.filter(f => options.excludeRedFlags.indexOf(f) === -1);
-    }
+    else {
+        if(options.excludeRedFlags) {
+            redFlags = redFlags.filter(f => options.excludeRedFlags.indexOf(f) === -1);
+        }
+        if(options.addRedFlags) {
+            redFlags = redFlags.concat(options.addRedFlags);
+        }
+    } 
 
     redFlags =  '(' + redFlags.join('|') + ')';
     let bracketsRegex = new RegExp('(\\(|\\[)(.*)' + redFlags + '(.*)(\\)|\\])(\\)|\\])?', 'gi');
