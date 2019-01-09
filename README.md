@@ -3,20 +3,9 @@ CleanTag is an npm/python module that uses regex to remove common unnecessary wo
 
 This can be used to help make Last.fm scrobbling and library management more organized.
 
-## Usage
-```
-const cleantag = require('cleantag');
-
-let albumName = 'Godflesh - Post Self (Remastered)';
-albumName = cleantag.clean(albumName);
-
-console.log(albumName); // Godflesh - Post Self
-
-```
 
 ## Pattern Matching
-The regex pattern I used is: `(\(|\[|- ) (remastered|explicit|...) (\)|\])?(\)|\])?`
-This will catch the three following patterns:
+The program looks at the input string and detects any common unnecessary words (red flags) that are in the suffix of the string, formatted as such:
 - Title (suffix)
 - Title [suffix]
 - Title (suffix (suffix))
@@ -25,14 +14,28 @@ This will catch the three following patterns:
 - Title [suffix [suffix]]
 - Title - suffix
 
-The list of suffixes (38 as of 1/8/19) can be found in [https://github.com/FOSSforlife/album-cleantag/blob/master/suffixes.json](suffixes.json). Suffix checking is case-sensitive, so (deluxe), (Deluxe), and (DELUXE) will all be filtered.
+The "red flags" it searches for include: 'anniversary', 'bonus', 'deluxe', 'edition', 'expanded', 'explicit', 'reissue', 'remaster', 'version'. If a suffix contains one or more of these, the entire suffix is deleted.
 
-## Examples
-Input: 'Moving Pictures (2011 Remaster)'
-Output: 'Moving Pictures'
+For example, if you give it `Swans - Filth (Deluxe Version)`, it will return `Swans - Filth`.
 
-Input: 'All We Love We Leave Behind [Deluxe Edition]'
-Output: 'All We Love We Leave Behind'
 
-Input: 'Disintegration (Deluxe Edition [Remastered])'
-Output: 'Disintegration'
+## Usage
+```
+const cleantag = require('cleantag');
+
+let albumName = 'Godflesh - Post Self (Remastered)';
+albumName = cleantag.clean(albumName);
+
+console.log(albumName); // Godflesh - Post Self
+```
+
+### Options
+The options object can be passed to the second parameter. It can contain the following parameters:
+```
+const options = {
+    customRedFlags: replace my red flags with your own list
+    excludeRedFlags: red flags to ignore (assuming customRedFlags is empty)
+}
+
+cleantag.clean(albumName, options);
+```

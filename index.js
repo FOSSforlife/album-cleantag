@@ -1,27 +1,31 @@
-const fs = require('fs');
+module.exports.clean = function (name, options = {}) {
+    let redFlags = ['anniversary', 'bonus', 'deluxe', 'edition', 'expanded', 'explicit', 'reissue', 'remaster', 'version'];
 
-let redFlags = 'bonus|deluxe|edition|expanded|explicit|remaster|version';
-
-let regex = new RegExp('(\\(|\\[)(.*)(' + redFlags + ')(.*)(\\)|\\])(\\)|\\])?', 'gi');
-let regex2 = new RegExp('(- )(.*)(' + redFlags + ')(.*)', 'gi');
-
-module.exports.clean = function (name) {
-    // filters parentheses and brackets
-    name = name.replace(regex, '');
-
-    // searches for hyphens (e.g. 'Title - Remastered')
-    if(name.match(/-/g) === null) {
-        return name;
+    if(options.customRedFlags) {
+        redFlags = options.customRedFlags;
     }
-    else {
-        if(name.match(/-/g).length === 1) {
-            return name.replace(regex2, '').trim();
+    else if(options.excludeRedFlags) {
+        redFlags = redFlags.filter(f => options.excludeRedFlags.indexOf(f) === -1);
+        console.log(redFlags);
+    }
+
+    redFlags =  '(' + redFlags.join('|') + ')';
+    let bracketsRegex = new RegExp('(\\(|\\[)(.*)' + redFlags + '(.*)(\\)|\\])(\\)|\\])?', 'gi');
+    let hyphenRegex = new RegExp('(- )(.*)' + redFlags + '(.*)', 'gi');
+
+    // filters parentheses and brackets
+    name = name.replace(bracketsRegex, '');
+
+    if(name.indexOf('-') !== -1) {
+        if(name.indexOf('-') === name.lastIndexOf('-')) {
+            name = name.replace(hyphenRegex, '');
         }
         else {
+            // if multiple hyphens, only checks the phrase after the last hyphen
             const lastHyphen = name.lastIndexOf('-');
             const firstBit = name.substring(0, lastHyphen);
-            return firstBit + name.substr(lastHyphen).replace(regex2, '').trim();
+            name = firstBit + name.substr(lastHyphen).replace(hyphenRegex, '');
         }
     }
-    
+    return name.trim();
 };
