@@ -1,6 +1,6 @@
 const assert = require('assert');
 const fs = require('fs');
-const cleantag = require('./index');
+const cleantag = require('./cleantag');
 
 let albumName = 'Converge - Jane Doe';
 
