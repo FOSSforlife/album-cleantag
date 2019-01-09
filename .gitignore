@@ -62,3 +62,6 @@ typings/
 
 # Visual Studio code
 .vscode/
+
+# Python cache
+__pycache__/

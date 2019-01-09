@@ -7,7 +7,7 @@ def clean(name, options={}):
     if 'customRedFlags' in options:
         redFlags = options['customRedFlags']
     elif 'excludeRedFlags' in options:
-        redFlags = filter(lambda f: f not in options['excludeRedFlags'], redFlags)
+        redFlags = filter(lambda f: f in options['excludeRedFlags'], redFlags)
 
     redFlags = '(' + '|'.join(redFlags) + ')'
     bracketsRegex = re.compile(r'(\(|\[)(.*)' + redFlags + r'(.*)(\)|\])(\)|\])?', re.I)
