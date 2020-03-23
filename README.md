@@ -1,3 +1,5 @@
+**V3 UPDATE**: This library is currently being rewritten to utilize the filters from [WebScrobbler](https://github.com/web-scrobbler/web-scrobbler) instead of using my own regex. This will result in a more robust filtering system.
+
 # Album CleanTag
 CleanTag is an npm/python module that uses regex to remove common unnecessary words from album and song tags, such as '(remastered)', '[deluxe edition]', etc.
 

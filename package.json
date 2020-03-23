@@ -1,10 +1,10 @@
 {
   "name": "album-cleantag",
-  "version": "2.1.0",
+  "version": "3.0.0-beta",
   "description": "A module that removes common unnecessary words from album and song tags, such as 'remastered', 'deluxe edition', etc.",
   "main": "cleantag.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "update-filter": "cat assets/MIT_LICENSE.js > filter.js && wget https://raw.githubusercontent.com/web-scrobbler/web-scrobbler/master/src/core/content/filter.js -O ->> filter.js"
   },
   "keywords": [
     "album",
