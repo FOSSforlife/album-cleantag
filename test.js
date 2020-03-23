@@ -4,7 +4,7 @@ const cleantag = require('./cleantag');
 
 let albumName = 'Converge - Jane Doe';
 
-let unwantedSuffixes = JSON.parse(fs.readFileSync('./sampleSuffixes.json'));
+let unwantedSuffixes = require('./sampleSuffixes.json');
 
 let formats = [
     (name, suffix) => `${name} (${suffix})`,
@@ -18,7 +18,7 @@ let formats = [
 
 formats.forEach(addSuffix => {
     unwantedSuffixes.forEach(suffix => {
-        let albumWithSuffix = addSuffix(albumName, suffix); 
+        let albumWithSuffix = addSuffix(albumName, suffix);
         console.log(`Testing ${albumWithSuffix}`);
         assert.strictEqual(cleantag.clean(albumWithSuffix), albumName);
     });
