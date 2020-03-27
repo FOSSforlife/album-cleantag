@@ -1,3 +1,5 @@
+mv filter.js filter-old.js
+
 echo "/*
 
 The MIT License (MIT) Copyright © 2010-2020 David Šabata & Web Scrobbler Team
@@ -12,3 +14,5 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 " > filter.js
 
 wget https://raw.githubusercontent.com/web-scrobbler/web-scrobbler/master/src/core/content/filter.js -O ->> filter.js
+diff filter.js filter-old.js
+rm filter-old.js

@@ -20,5 +20,6 @@ module.exports.clean = function (name, options = {}) {
 
   filter = filter.extend(new MetadataFilter(exampleFilterSet));
 
+  return MetadataFilter.removeRemastered(name).trim();
   return filter.filterField('album', name).trim();
 }
